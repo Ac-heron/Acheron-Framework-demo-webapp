@@ -1,5 +1,6 @@
 package com.herohuang.service;
 
+import com.herohuang.helper.DatabaseHelper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class CustomerServiceTest {
 
     @Before
     public void init(){
-
+        DatabaseHelper.executeSqlFile("sql/init.sql");
     }
 
     @Test

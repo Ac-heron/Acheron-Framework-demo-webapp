@@ -1,22 +1,30 @@
 package com.herohuang.controller;
 
+import com.herohuang.model.Customer;
+import com.herohuang.service.CustomerService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 
-@WebServlet("/hello")
+@WebServlet("/customer")
 public class CustomerServlet extends HttpServlet {
+
+    private CustomerService customerService;
+
+    @Override
+    public void init() throws ServletException {
+        customerService = new CustomerService();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String currentTime = dateFormat.format(new Date());
-        req.setAttribute("currentTime", currentTime);
+        List<Customer> customerList = customerService.getCustomerList();
+        req.setAttribute("customerList", customerList);
         req.getRequestDispatcher("/WEB-INF/jsp/customer_list.jsp").forward(req, resp);
     }
 }
