@@ -1,4 +1,4 @@
-package com.herohuang;
+package com.herohuang.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,12 +11,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @WebServlet("/hello")
-public class HelloServlet extends HttpServlet {
+public class CustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentTime = dateFormat.format(new Date());
         req.setAttribute("currentTime", currentTime);
-        req.getRequestDispatcher("/WEB-INF/jsp/hello.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/customer_list.jsp").forward(req, resp);
     }
 }
