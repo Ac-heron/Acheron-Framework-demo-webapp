@@ -1,7 +1,7 @@
 package com.herohuang.service;
 
 import com.herohuang.framework.annotation.Service;
-import com.herohuang.helper.DatabaseHelper;
+import com.herohuang.framework.helper.DatabaseHelper;
 import com.herohuang.model.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
