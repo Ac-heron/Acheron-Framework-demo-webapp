@@ -1,6 +1,6 @@
 package com.herohuang.service;
 
-import com.herohuang.helper.DatabaseHelper;
+import com.herohuang.framework.helper.DatabaseHelper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
