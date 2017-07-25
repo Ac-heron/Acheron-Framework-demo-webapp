@@ -1,7 +1,7 @@
 package com.herohuang.helper;
 
-import com.herohuang.util.CollectionUtil;
-import com.herohuang.util.PropsUtil;
+import com.herohuang.framework.helper.ConfigHelper;
+import com.herohuang.framework.util.CollectionUtil;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -18,7 +18,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 public final class DatabaseHelper {
 
@@ -41,11 +40,10 @@ public final class DatabaseHelper {
         CONNECTION_HOLDER = new ThreadLocal<>();
         QUERY_RUNNER = new QueryRunner();
 
-        Properties conf = PropsUtil.loadProps("config.properties");
-        String driver = conf.getProperty("jdbc.driver");
-        String url = conf.getProperty("jdbc.url");
-        String username = conf.getProperty("jdbc.username");
-        String password = conf.getProperty("jdbc.password");
+        String driver = ConfigHelper.getJdbcDriver();
+        String url = ConfigHelper.getJdbcUrl();
+        String username = ConfigHelper.getJdbcUsername();
+        String password = ConfigHelper.getJdbcPassword();
 
         DATA_SOURCE = new BasicDataSource();
         DATA_SOURCE.setDriverClassName(driver);
