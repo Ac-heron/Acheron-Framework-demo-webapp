@@ -1,6 +1,7 @@
 package com.herohuang.service;
 
 import com.herohuang.framework.annotation.Service;
+import com.herohuang.framework.annotation.Transaction;
 import com.herohuang.framework.helper.DatabaseHelper;
 import com.herohuang.model.Customer;
 import org.slf4j.Logger;
@@ -19,14 +20,17 @@ public class CustomerService {
         return DatabaseHelper.queryEntityList(Customer.class, sql);
     }
 
+    @Transaction
     public boolean createCustomer(Map<String, Object> fieldMap) {
         return DatabaseHelper.insertEntity(Customer.class, fieldMap);
     }
 
+    @Transaction
     public boolean updateCustomer(long id, Map<String, Object> fieldMap) {
         return DatabaseHelper.updateEntity(Customer.class, id, fieldMap);
     }
 
+    @Transaction
     public boolean deleteCustomer(long id) {
         return DatabaseHelper.deleteEntity(Customer.class, id);
     }
