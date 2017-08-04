@@ -33,16 +33,16 @@
 <script src="https://cdn.bootcss.com/jquery.form/4.2.1/jquery.form.min.js"></script>
 <script>
     $(function () {
-       $("#customer_form").ajaxForm({
-           type:'post',
-           url:'${BASE}/customer_create',
-           success:function (data) {
-               if(data) {
-                   location.href='${BASE}/customer';
-               }
-           }
+        $("#customer_form").ajaxForm({
+            type: 'post',
+            url: '${BASE}/customer_create',
+            success: function (data) {
+                if (data) {
+                    location.href = '${BASE}/customer';
+                }
+            }
 
-       });
+        });
     });
 </script>
 </body>
