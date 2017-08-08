@@ -57,10 +57,10 @@ public class Customer {
     }
 
     public static void main(String[] args) {
-        int[] num = new int[]{40,32,37,44,39};
+        int[] num = new int[]{27,35,36,33,30,36,43,33,41,32,38,35,42};
         for (int i : num) {
             String  result= String.valueOf(((i -15)*3.5 + 22.5));
-            System.out.println("输入："+i+"---> 输出："+result+"\n");
+            System.out.println("输入工龄："+i+"---> 输出结果："+result+"\n");
         }
     }
 }

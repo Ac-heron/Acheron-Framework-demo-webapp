@@ -10,6 +10,7 @@ import com.herohuang.model.Customer;
 import com.herohuang.service.CustomerService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * desc
@@ -25,7 +26,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @Action("get:/customer")
-    public View index(Param param) {
+    public View index() {
         List<Customer> customerList = customerService.getCustomerList();
         return new View("customer_list.jsp").addModel("customerList", customerList);
     }
@@ -34,5 +35,14 @@ public class CustomerController {
     public Data ajax(Param param) {
         List<Customer> customerList = customerService.getCustomerList();
         return new Data(customerList);
+    }
+
+
+    @Action("post:/customer_create")
+    public Data createSubmit(Param param) {
+        Map<String, Object> fieldMap = param.getMap();
+
+        String result = null;
+        return new Data(result);
     }
 }
