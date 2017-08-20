@@ -2,7 +2,9 @@ package com.herohuang.service;
 
 import com.herohuang.framework.annotation.Service;
 import com.herohuang.framework.annotation.Transaction;
+import com.herohuang.framework.bean.FileParam;
 import com.herohuang.framework.helper.DatabaseHelper;
+import com.herohuang.framework.helper.UploadHelper;
 import com.herohuang.model.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,5 +36,14 @@ public class CustomerService {
     @Transaction
     public boolean deleteCustomer(long id) {
         return DatabaseHelper.deleteEntity(Customer.class, id);
+    }
+
+    @Transaction
+    public boolean createCustomer(Map<String, Object> fieldMap, FileParam fileParam) {
+        boolean b = DatabaseHelper.insertEntity(Customer.class, fieldMap);
+        if (b) {
+            UploadHelper.uploadFile("/tmp/upload", fileParam);
+        }
+        return b;
     }
 }

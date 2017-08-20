@@ -10,7 +10,6 @@ import com.herohuang.model.Customer;
 import com.herohuang.service.CustomerService;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * desc
@@ -32,7 +31,7 @@ public class CustomerController {
     }
 
     @Action("get:/ajax")
-    public Data ajax(Param param) {
+    public Data ajax() {
         List<Customer> customerList = customerService.getCustomerList();
         return new Data(customerList);
     }
@@ -40,10 +39,10 @@ public class CustomerController {
 
     @Action("post:/customer_create")
     public Data createSubmit(Param param) {
-        Map<String, Object> fieldMap = param.getMap();
-
-
-        String result = null;
-        return new Data(result);
+        //Map<String, Object> fieldMap = param.getFieldMap();
+        //FileParam fileParam = param.getFile("photo");
+        //boolean result = customerService.createCustomer(fieldMap, fileParam);
+        //return new Data(result);
+        return null;
     }
 }
